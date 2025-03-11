@@ -16,8 +16,8 @@
 ### 1. 克隆代码库
 
 ```bash
-git clone https://github.com/976853694/huluxia-api.git
-cd 葫芦侠采集器
+git@github.com:976853694/huluxia-api.git
+cd /huluxia-api
 ```
 
 ### 2. 安装依赖
