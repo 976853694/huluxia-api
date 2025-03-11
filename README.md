@@ -16,7 +16,7 @@
 ### 1. 克隆代码库
 
 ```bash
-git clone <repository_url>
+git clone https://github.com/976853694/huluxia-api.git
 cd 葫芦侠采集器
 ```
 
