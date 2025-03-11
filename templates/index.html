@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}葫芦侠论坛板块列表{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2 class="mb-4">板块列表 (共 {{ categories|length }} 个)</h2>
+    </div>
+</div>
+
+<div class="row">
+    {% for category in categories %}
+    <div class="col-md-6 col-lg-4">
+        <div class="card category-card">
+            <div class="card-header d-flex align-items-center">
+                {% if category['板块图标'] %}
+                <img src="{{ category['板块图标'] }}" alt="{{ category['板块名称'] }}" class="category-icon">
+                {% endif %}
+                <h5 class="card-title mb-0">{{ category['板块名称'] }}</h5>
+            </div>
+            <div class="card-body">
+                {% if category['板块描述'] %}
+                <p class="card-text">{{ category['板块描述']|truncate(100) }}</p>
+                {% endif %}
+                <p class="card-text">
+                    <small class="text-muted">
+                        帖子数: {{ category['帖子数量'] }} | 浏览量: {{ category['浏览数量'] }}
+                    </small>
+                </p>
+                
+                {% if category['子版块'] %}
+                <div class="subcategory-list">
+                    <h6>子版块:</h6>
+                    <div class="row">
+                        {% for sub in category['子版块'] %}
+                        {% if sub['名称'] != '全部' %}
+                        <div class="col-6">
+                            <div class="subcategory-item">{{ sub['名称'] }}</div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <div class="mt-3">
+                    <a href="/category/{{ category['板块ID'] }}" class="btn btn-primary">查看详情</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %} 
